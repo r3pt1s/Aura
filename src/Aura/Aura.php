@@ -3,6 +3,7 @@
 namespace Aura;
 
 use Aura\command\AuraCommand;
+use Aura\listener\EventListener;
 use Aura\task\KnockbackTask;
 use pocketmine\permission\DefaultPermissions;
 use pocketmine\permission\Permission;
@@ -16,6 +17,7 @@ class Aura extends PluginBase {
     private Permission $bypassPermission;
     private float|int $radius;
     private float|int $knockbackPower;
+    public array $noFallDamage = [];
 
     protected function onEnable(): void {
         self::$instance = $this;
@@ -29,8 +31,9 @@ class Aura extends PluginBase {
         DefaultPermissions::registerPermission($this->bypassPermission, [PermissionManager::getInstance()->getPermission(DefaultPermissions::ROOT_OPERATOR)]);
         DefaultPermissions::registerPermission($this->usePermission, [PermissionManager::getInstance()->getPermission(DefaultPermissions::ROOT_OPERATOR)]);
 
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->getServer()->getCommandMap()->register("aura", new AuraCommand());
-        $this->getScheduler()->scheduleRepeatingTask(new KnockbackTask(), 20);
+        $this->getScheduler()->scheduleRepeatingTask(new KnockbackTask(), 1);
     }
 
     public function parse(string $key, array $parameters = []): string {

@@ -22,6 +22,7 @@ class KnockbackTask extends Task {
                 foreach ($player->getWorld()->getEntities() as $entity) {
                     if ($entity instanceof Player) {
                         if ($entity->getName() == $player->getName()) continue;
+                        if ($entity->isSpectator()) continue;
                         if (!$entity->hasPermission(Aura::getInstance()->getBypassPermission()->getName())) {
                             if ($player->getPosition()->distance($entity->getPosition()) <= Aura::getInstance()->getRadius()) {
                                 $entity->knockBack(
@@ -30,6 +31,10 @@ class KnockbackTask extends Task {
                                     Aura::getInstance()->getKnockbackPower(),
                                     0.7
                                 );
+
+                                if ($entity->isSurvival(true) || $entity->isAdventure(true)) {
+                                    Aura::getInstance()->noFallDamage[$entity->getName()] = $entity->getName();
+                                }
                             }
                         }
                     } else if ($entity instanceof Living) {
