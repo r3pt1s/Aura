@@ -1,0 +1,20 @@
+# The radius in which the entities should be must be greater than 0.
+radius: 1
+# The entities in your near with the radius get knocked with this knockback power. (Must be greater than 0)
+knockbackPower: 1
+
+aura-command-description: "Activate/Deactivate your Aura"
+
+aura-use-permission: "aura.use"
+aura-bypass-permission: "aura.bypass"
+
+aura-no-permission: "§cYou are not allowed to do this."
+aura-activation-message: "§aYour Aura has been activated."
+aura-deactivation-message: "§cYour Aura has been deactivated."
+aura-status-active: "§aACTIVE"
+aura-status-inactive: "§cINACTIVE"
+aura-ui-title: "§5Aura"
+# Valid keys: %status% (Status of the aura: active, inactive)
+aura-ui-text: "§7Status: §e%status%"
+aura-ui-button-activate: "§aActivate your §5Aura"
+aura-ui-button-deactivate: "§cDeactivate your §5Aura"

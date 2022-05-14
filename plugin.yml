@@ -1,0 +1,5 @@
+name: Aura
+version: 1.0
+api: 4.0.0
+main: Aura\Aura
+author: r3pt1s
