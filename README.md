@@ -19,3 +19,5 @@ A plugin that kicks away players near you
 - Configurable **radius** and **knockback power**
 - Configurable **description** for the **/aura** command
 
+## Suggestions / Problems?
+- [Create an issue](https://github.com/r3pt1s/Aura/issues/new)
